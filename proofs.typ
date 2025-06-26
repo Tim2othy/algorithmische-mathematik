@@ -1,16 +1,13 @@
 #import "settings.typ": *
 #import "@preview/lovelace:0.3.0": *
 
-#show: project.with(
-  course: "Algorithmische Mathematik I",
-  exersise: "Ausgewählte Aufgaben",
-)
+#show: project.with(course: "Algorithmische Mathematik I", exersise: "Ausgewählte Aufgaben")
 
 // Start of Document
 
 + Ersetzen Sie bei der Berechnung der Collatz-Folge die Anweisung `n = 3 * n + 1;` durch
 
-  (a) `n = n + 1;` Zeigen Sie, dass das Programm dann stets terminiert, und  geben Sie (mit Hilfe der $O$-Notation) eine möglichst gute Schranke für die Zahl der Rechenschritte an.
+  (a) `n = n + 1;` Zeigen Sie, dass das Programm dann stets terminiert, und geben Sie (mit Hilfe der $O$-Notation) eine möglichst gute Schranke für die Zahl der Rechenschritte an.
 
   Die Anweisung `n = n + 1` wird nur auf ungerade Zahlen ausgeführt also muss das Ergebnis gerade sein, also kann die Anweisung maximal jedes zweite mal vorkommen. Beide Anweisungen hintereinander, also `n = (n + 1)/2` oder `n = n/2 + 1`, schrumpfen jedes $n > 2$. Also muss `2` erreicht werden, und `2` führt zu `1` also terminiert das Programm stets.
 
@@ -96,14 +93,18 @@
   (d) Ist die Darstellung aus Aufgabenteil (c) immer eindeutig?
 
 
-  Angenommen die Darstellung ist nicht eindeutig es müsste unterschiedliche Folgen $a_0 ... a_(l-1)$ und $b_0 ... b_(l-1)$ geben, mit $ sum_(i=0)^(l-1) a_i (-10)^i = x = sum_(i=0)^(l-1) b_i (-10)^i $ Also muss gelten $sum_(i=0)^(l-1) (a_i -b_i) (-10)^i = 0$. Angenommen der Term $(a_k -b_k) (-10)^k$ sei der höchste Term ungleich 0. So muss gelten $sum_(i=0)^(k-1) (a_i -b_i) (-10)^i = - (a_k - b_k) (-10)^k$. Der größtmöglichste absolute Wert für die linke Seite dieser Gleichung ist jedoch kleiner als der kleinstmögliche absolute Wert für die rechte Seite, also kann diese Gleichung niemals erfüllt sein. Also kann es keine zwei Darstellungen für die Gleiche Zahl geben. Also ist die Darstellung immer eindeutig.
+  Angenommen die Darstellung ist nicht eindeutig es müsste unterschiedliche Folgen $a_0 ... a_(l-1)$ und $b_0 ... b_(l-1)$ geben, mit
+  $
+    sum_(i=0)^(l-1) a_i (-10)^i = x = sum_(i=0)^(l-1) b_i (-10)^i
+  $
+  Also muss gelten $sum_(i=0)^(l-1) (a_i -b_i) (-10)^i = 0$. Angenommen der Term $(a_k -b_k) (-10)^k$ sei der höchste Term ungleich 0. So muss gelten $sum_(i=0)^(k-1) (a_i -b_i) (-10)^i = - (a_k - b_k) (-10)^k$. Der größtmöglichste absolute Wert für die linke Seite dieser Gleichung ist jedoch kleiner als der kleinstmögliche absolute Wert für die rechte Seite, also kann diese Gleichung niemals erfüllt sein. Also kann es keine zwei Darstellungen für die Gleiche Zahl geben. Also ist die Darstellung immer eindeutig.
 
 
 
 // TODO beweis verbessern, nicht Buch erwähnen
 
 
-+ Zeigen Sie, dass man mit Hilfe von Karatsubas Algorithmus zwei natürliche Zahlen mit $k$- bzw. $l$-stelliger Binärdarstellung (mit  $k ≤ l$) in $O(k^(log_2(3)−1)l)$ Zeit multiplizieren kann.
++ Zeigen Sie, dass man mit Hilfe von Karatsubas Algorithmus zwei natürliche Zahlen mit $k$- bzw. $l$-stelliger Binärdarstellung (mit $k ≤ l$) in $O(k^(log_2(3)−1)l)$ Zeit multiplizieren kann.
 
 
 
@@ -113,19 +114,25 @@
     T(l,k) & ≤ c ·l +3T( ceil(l/ 2) +1, ceil(k/2) +1) && "für" l,k ≥ 4.
   $
 
-  Die Begründung ist analog wie im Buch, es gibt drei rekursive Aufrufe und die Zahlen haben jeweils maximal $ceil(l/ 2) +1$ beziehungsweise  $ceil(k/2) +1$ Stellen.
+  Die Begründung ist analog wie im Buch, es gibt drei rekursive Aufrufe und die Zahlen haben jeweils maximal $ceil(l/ 2) +1$ beziehungsweise $ceil(k/2) +1$ Stellen.
 
 
   Die Rekursion lösen wir wie folgt. Erstmal behaupten wir, dass für alle $m,n in NN union {0}$ gilt:
 
-  $ T(2^m + 2, 2^n + 2) ≤ c ·( (3 / 2)^n · 2^m - 2^(m+1) -1) $
+  $
+    T(2^m + 2, 2^n + 2) ≤ c ·( (3 / 2)^n · 2^m - 2^(m+1) -1)
+  $
 
   Dies kann man per induktion beweisen. Für $m = n = 0$ ist $T(3,3) ≤ c$. Für $m,n in NN$ ist, wieder wegen der obigen Gleichung, $T(2^m + 2, 2^n + 2) ≤ c · ( 2^m +2) + 3T(2^(m-1) + 2, 2^(n-1) + 2)$, was man nach der Induktionsvoraussetzung ersetzen kann durch
-  $ T(2^m + 2, 2^n + 2) ≤ c · (2^m + 2 + 3( (3 / 2)^(n-1) · 2^(m-1) - 2^(m)-1) ) $
+  $
+    T(2^m + 2, 2^n + 2) ≤ c · (2^m + 2 + 3( (3 / 2)^(n-1) · 2^(m-1) - 2^(m)-1) )
+  $
 
   Dies vereinfacht sich zu
 
-  $ c · (3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) - 1) $
+  $
+    c · (3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) - 1)
+  $
 
 
   Jetzt bleibt zu zeigen, dass gilt:
@@ -167,7 +174,7 @@
 
   (b) $f : RR -> RR$ mit $f(x)=a^x = e^(x ln a)$ für festes $a > 0,$
 
-  Die Kondition ist $abs(ln(a) e^(x ln(a)) times x)/ abs(e^(x ln a)) = abs(ln(a) times x)$ Also ist sie nur für absolut kleine Werte für $a$ und $x$  gut konditioniert.
+  Die Kondition ist $abs(ln(a) e^(x ln(a)) times x)/ abs(e^(x ln a)) = abs(ln(a) times x)$ Also ist sie nur für absolut kleine Werte für $a$ und $x$ gut konditioniert.
 
 
   (c) $f : RR without {0} -> RR$ mit $f(x) = 1/x$
@@ -190,7 +197,10 @@
 
   (a) Wie sieht eine Iteration dieses Verfahrens aus? Berechnen Sie $x_1, x_2, x_3$ für $a = 3$ und $x_0 = 1$.
 
-  Eine Iteration besteht aus $ x_(n + 1) <- x_n / 2 (3 - x_n^2/ a). $
+  Eine Iteration besteht aus
+  $
+    x_(n + 1) <- x_n / 2 (3 - x_n^2/ a).
+  $
 
   $x_0 = 1$,
 
@@ -205,7 +215,11 @@
 
   Zuerst zeige ich, dass sie gegen $sqrt(a)$ konvergiert. Für $x_n = sqrt(a)$ gilt $x_n = x_(n+1)$ also divergiert die Folge nicht sobald sie $sqrt(a)$ einmal erreicht hat.
 
-  Für $x_n < sqrt(a)$ gilt $x_n^2 / a< 1$ also wird nach einer Iteration  $ x_(n + 1) <- x_n + 1/ 2 (x_n - x_n times x_n^2/ a). $ dann $x_(n+1) > x_n$ gelten. Also wird die Folge immer wachsen wenn sie kleiner als $sqrt(a)$ ist.
+  Für $x_n < sqrt(a)$ gilt $x_n^2 / a< 1$ also wird nach einer Iteration
+  $
+    x_(n + 1) <- x_n + 1/ 2 (x_n - x_n times x_n^2/ a).
+  $
+  dann $x_(n+1) > x_n$ gelten. Also wird die Folge immer wachsen wenn sie kleiner als $sqrt(a)$ ist.
 
   Damit die Folge nicht konvergiert müsste $x_n < sqrt(a) < x_(n+1)$ gelten. Andernfalls muss die Folge für ein $x_0 = 1$ zu $sqrt(a)$ konvergieren.
 
@@ -294,9 +308,12 @@
     + *if* $|S| > 1$
       + *then* sei $m = n mod b$ und $S = dot(union)_(i=1)^b S_i$ mit $abs(S_i) = ceil(n/b)$ für $i = 1, dots, m$ und $abs(S_i) = floor(n/b)$ für $i = m+1, dots, b$. Sortiere $S_1$ bis $S_b$ (rekursiv mit b-Mergesort) Verschmelze die Sortierungen von $S_1$ bis $S_b$ zu Sortierung von $S$.
   ]
-  + Man kann ein binär heap mit dem ersten Element aus jedem der $b$ Teilmengen erstellen. Die komplexität hierfür ist $O(b log b)$, (Buch Satz 8.21). Jetzt kann man das kleinste Element entfernen und ans Ende einer neuen Liste stellen. Und danach das nächste Element der Liste wo das kleinste Element herkommt, dem heap hinzufügen. Diesen Vorgang kann man $n$ mal wiederholen, dann hat man alle Elemente verschmolzen. In einem binär heap benötigen `extract_min` und `insert`, die Operationen die man benutzt,  beide eine Zeit von $log b$. Also ist die Gesamtzeit $b log b + 2(n log b)$ und da $b lt.eq n$ gilt ist die Zeit in $O(n log b)$.
+  + Man kann ein binär heap mit dem ersten Element aus jedem der $b$ Teilmengen erstellen. Die komplexität hierfür ist $O(b log b)$, (Buch Satz 8.21). Jetzt kann man das kleinste Element entfernen und ans Ende einer neuen Liste stellen. Und danach das nächste Element der Liste wo das kleinste Element herkommt, dem heap hinzufügen. Diesen Vorgang kann man $n$ mal wiederholen, dann hat man alle Elemente verschmolzen. In einem binär heap benötigen `extract_min` und `insert`, die Operationen die man benutzt, beide eine Zeit von $log b$. Also ist die Gesamtzeit $b log b + 2(n log b)$ und da $b lt.eq n$ gilt ist die Zeit in $O(n log b)$.
 
-  + Wir können schreiben $ T(n) ≤ b T( n/b ) + c n log b $
+  + Wir können schreiben
+    $
+      T(n) ≤ b T( n/b ) + c n log b
+    $
 
     Per induktion zeigen wir das gilt:
     $T(b^k) &<= c ( k log b +1)b^k$
