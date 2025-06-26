@@ -23,9 +23,7 @@
     indent: 1em,
   )
 
-  set page(margin: (x: 1.5cm, y: 7em), numbering: "1", header: [
-    #course   #h(1fr)     #exersise\
-  ])
+  set page(margin: (x: 1.5cm, y: 7em), numbering: "1", header: [#course\ ])
 
   // Title row.
   align(center)[
