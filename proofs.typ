@@ -85,7 +85,7 @@
 
     Jede negative Zahl $x$ mit $f$ stellen (zur basis 10) lässt sich als $x = k - 10^(f+1)$ darstellen, mit $k in NN$. Stellt man $k$ zur Basis -10 dar, falls $f+1$ ungerade ist incrementiert man $a_(f+1)$ um eins um $x$ zu erhalten, falls $a_(f+1) = 9$ ist geht man wie eben vor und verringert $a_(f+2)$ um eins etc.
 
-    Ist $a_(f+1)$ gerade setzt man es gleich 9 und $a_(f+2)$ gleich 1 um um $x$ zu erhalten. Also lassen sich alle negativen Zahler erreichen.
+    Ist $a_(f+1)$ gerade setzt man es gleich 9 und $a_(f+2)$ gleich 1 um um $x$ zu erhalten. Also lassen sich alle negativen Zahlen erreichen.
 
 
     0 erreicht man mit $l = 1$ und $a_0 = 0$.
@@ -97,24 +97,19 @@
     $
       sum_(i=0)^(l-1) a_i (-10)^i = x = sum_(i=0)^(l-1) b_i (-10)^i
     $
-    Also muss gelten $sum_(i=0)^(l-1) (a_i -b_i) (-10)^i = 0$. Angenommen der Term $(a_k -b_k) (-10)^k$ sei der höchste Term ungleich 0. So muss gelten $sum_(i=0)^(k-1) (a_i -b_i) (-10)^i = - (a_k - b_k) (-10)^k$. Der größtmöglichste absolute Wert für die linke Seite dieser Gleichung ist jedoch kleiner als der kleinstmögliche absolute Wert für die rechte Seite, also kann diese Gleichung niemals erfüllt sein. Also kann es keine zwei Darstellungen für die Gleiche Zahl geben. Also ist die Darstellung immer eindeutig.
+    Also muss gelten $sum_(i=0)^(l-1) (a_i -b_i) (-10)^i = 0$. Angenommen der Term $(a_k -b_k) (-10)^k$ sei der höchste Term ungleich 0. So muss gelten $sum_(i=0)^(k-1) (a_i -b_i) (-10)^i = - (a_k - b_k) (-10)^k$. Der größtmöglichste absolute Wert für die linke Seite dieser Gleichung ist jedoch kleiner als der kleinstmögliche absolute Wert für die rechte Seite, also kann diese Gleichung niemals erfüllt sein. Somit kann es keine zwei Darstellungen für die Gleiche Zahl geben, und die Darstellung ist immer eindeutig.
 
-
-
-// TODO beweis verbessern, nicht Buch erwähnen
 
 
 + Zeigen Sie, dass man mit Hilfe von Karatsubas Algorithmus zwei natürliche Zahlen mit $k$- bzw. $l$-stelliger Binärdarstellung (mit $k ≤ l$) in $O(k^(log_2(3)−1)l)$ Zeit multiplizieren kann.
 
-
-
-  Wie beim Beweis im Buch kann man schreiben:
+  Wir können schreiben:
   $
     T(l,k) & ≤ c                                      && "für" l,k ≤ 3  \
     T(l,k) & ≤ c ·l +3T( ceil(l/ 2) +1, ceil(k/2) +1) && "für" l,k ≥ 4.
   $
 
-  Die Begründung ist analog wie im Buch, es gibt drei rekursive Aufrufe und die Zahlen haben jeweils maximal $ceil(l/ 2) +1$ beziehungsweise $ceil(k/2) +1$ Stellen.
+  Dies muss gelten da es drei rekursive Aufrufe gibt und die zu multipliziereden Zahlen jeweils maximal $ceil(l/ 2) +1$ beziehungsweise $ceil(k/2) +1$ Stellen haben.
 
 
   Die Rekursion lösen wir wie folgt. Erstmal behaupten wir, dass für alle $m,n in NN union {0}$ gilt:
@@ -128,10 +123,10 @@
     T(2^m + 2, 2^n + 2) ≤ c · (2^m + 2 + 3( (3 / 2)^(n-1) · 2^(m-1) - 2^(m)-1) )
   $
 
-  Dies vereinfacht sich zu
+  und sich vereinfachen lässt zu
 
   $
-    c · (3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) - 1)
+    c · (3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) - 1).
   $
 
 
@@ -146,19 +141,18 @@
                                                    3 & ≤ 3                                  \
   $
 
-  Das schließt die induktion.
+  das schließt die induktion.
 
 
   Für zwei beliebige $l,k in NN$ mit $2 < k ≤ l$ sei nun $m := ceil(log_2(l - 2)) < 1+ log_2l$ und $n := ceil(log_2(k - 2)) < 1+ log_2k$. Dann gilt
 
   $
-                                  T(l,k) & ≤ \
-                     T(2^m + 2, 2^n + 2) & ≤ \
-    c · ( (3 / 2)^n · 2^m - 2^(m+1) -1 ) & < \
-                    c ·( (3/2)^n · 2^m ) & = \
-                c ·( 3^n · 2^m · 1/ 2^n) & ≤ \
-           c ·( 3^(log_2(k)) · l · 1/k ) & = \
-              c ·( k^(log_2(3) -1) · l )     \
+    T(l,k) & ≤ T(2^m + 2, 2^n + 2)                  \
+           & ≤ c · ( (3 / 2)^n · 2^m - 2^(m+1) -1 ) \
+           & < c ·( (3/2)^n · 2^m )                 \
+           & = c ·( 3^n · 2^m · 1/ 2^n)             \
+           & ≤ c ·( 3^(log_2(k)) · l · 1/k )        \
+           & = c ·( k^(log_2(3) -1) · l )
   $
 
 
@@ -201,14 +195,12 @@
     $
       x_(n + 1) <- x_n / 2 (3 - x_n^2/ a).
     $
+    Die geforderten Werte sind:
 
-    $x_0 = 1$,
-
-    $x_1 = 0.5 (3-1/3) = 4/3$,
-
-    $x_2 = 4/3 /2 (3 - (4/3)^2 /3) = 130 / 81$,
-
-    $x_3 = 130/162 (3 - (130/81)^2 /3) = 1.7290735 dots$
+    $x_0 = 1, \
+    x_1 = 0.5 (3-1/3) = 4/3, \
+    x_2 = 4/3 /2 (3 - (4/3)^2 /3) = 130 / 81, \
+    x_3 = 130/162 (3 - (130/81)^2 /3) = 1.7290735 dots$
 
 
   + Beweisen Sie, dass auch diese Variante quadratisch konvergiert.
@@ -229,22 +221,24 @@
 
     Damit dann gelten kann
 
-    $sqrt(a) &< x_(n+1) = x_n / 2 (3 - x_n^2/ a) \
-    2sqrt(a) &< 3( sqrt(a)- epsilon) - x_n^3/ a \
-    0 &< - ( 3 epsilon + epsilon^3 / a + (3 epsilon(sqrt(a) + epsilon) )/ sqrt(a))$
+    $
+       sqrt(a) & < x_(n+1) = x_n / 2 (3 - x_n^2/ a)                                          \
+      2sqrt(a) & < 3( sqrt(a)- epsilon) - x_n^3/ a                                           \
+             0 & < - ( 3 epsilon + epsilon^3 / a + (3 epsilon(sqrt(a) + epsilon) )/ sqrt(a))
+    $
 
     dies ist ein wiederspruch also kann nie $x_n < sqrt(a) < x_(n+1)$ gelten, also konvergiert die Funktion.
 
 
-    Nun zu zeigen, dass es quadratisch konvergiert.
-
-    Sei $x_n = sqrt(a) + epsilon_n$ so gilt, nach etwas umformung:
-
-    $x_(n+1) = sqrt(a) - (3 epsilon^3 ) / (2 sqrt(a)) - epsilon^3 / (2a)$
-
-    Man kann dies in $x_(n+1) - sqrt(a) <= c(x_n - sqrt(a))^2$ einsetzen knd kriegt.
-
-    $3 / (2sqrt(a)) + (x- sqrt(a) )/ (2a) <= c$ also gibt es ein $c$.
+    Nun zu zeigen, dass sie quadratisch konvergiert. Sei $x_n = sqrt(a) + epsilon_n$ so gilt, nach etwas umformung $x_(n+1) = sqrt(a) - (3 epsilon^3 ) / (2 sqrt(a)) - epsilon^3 / (2a)$. Dies kann man in
+    $
+      x_(n+1) - sqrt(a) <= c(x_n - sqrt(a))^2
+    $
+    einsetzen und erhält
+    $
+      3 / (2sqrt(a)) + (x- sqrt(a) )/ (2a) <= c
+    $
+    also gibt es ein $c$.
 
 // TODO die beiden oberen
 
@@ -266,7 +260,7 @@
 
   Man muss beachten, dass $v_r$ nicht gleich $v_s$ oder mit $v_s$ adjazent sein darf, dies ist aber möglich da der Grad von $v_l$ größer als der von $v_s$ ist, es muss also ein $v_r$ geben welches nicht $v_s$ ist oder mit $v_s$ adjazent ist, aber mit $v_l$ adjazent ist.
 
-  Dieser Vorgang lässt die Gradfolge unverändert, aber wir sind jetzt ein Schritt näher dran, dass genau die Knoten mit dem großten Grad mit $v_1$ adjazent sind. Dieser Vorgang kann wiederholt werden, bis dies erreicht ist. Dann kann man $v_1$ entfernen und erhällt einen neuen Graph mit der geforderten Gradfolge.
+  Dieser Vorgang lässt die Gradfolge unverändert, aber wir sind jetzt ein Schritt näher dran, dass genau die Knoten mit dem großten Grad mit $v_1$ adjazent sind. Dieser Vorgang kann wiederholt werden, bis dies erreicht ist. Dann kann man $v_1$ entfernen und erhält einen neuen Graph mit der geforderten Gradfolge.
 
   Die *Rückrichtung* lässt sich deutlich schneller beweisen.
 
@@ -369,7 +363,7 @@
 
     Aus (b) folgt die korrektheit des Algorithmus.
 
-    Die Laufzeit von $O(m log n)$ kann man analog zu Dijkstras Algorithmus zeigen (Satz 9.13 im Buch).
+    Die Laufzeit von $O(m log n)$ kann man analog zu Dijkstras Algorithmus zeigen (Satz 9.13 in Algorithmische Mathematik; Hougardy, Vygen).
 
     Nutzt man für die Menge $Q$ einen Binärheap, wobei $v$ den Schlüssel $l(v)$ hat. Dann haben wir jeweils bis zu n `extract_min`- und `insert-Operationen`, und
-    bis zu $m$ `decrease_key-Operationen`. Die Laufzeit folgt dann mit Satz 8.19 aus dem Buch.
+    bis zu $m$ `decrease_key-Operationen`. Die Laufzeit folgt dann mit Satz 8.19 aus dem soeben genannten Buch.
