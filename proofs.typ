@@ -3,12 +3,11 @@
 
 #show: project.with(
   course: "Algorithmische Mathematik I",
-  exersise: "Beweise Übungen",
+  exersise: "Ausgewählte Aufgaben",
 )
 
-
-
 // Start of Document
+
 + Ersetzen Sie bei der Berechnung der Collatz-Folge die Anweisung `n = 3 * n + 1;` durch
 
   (a) `n = n + 1;` Zeigen Sie, dass das Programm dann stets terminiert, und  geben Sie (mit Hilfe der $O$-Notation) eine möglichst gute Schranke für die Zahl der Rechenschritte an.
@@ -39,9 +38,6 @@
   Da wieder mindestens jede zweite Operation `n = n/2` ist fällt `n` in zwei Operationen mindestens mit `n = n/2 + 3`, also fällt jedes $n >6$ nach zwei Operationen. Insebesondere gilt `1 <- 2 <- 4 <- 8 <- 5`. Also werden genau alle Engaben nicht in $M_3$ terminieren.
 
 
-  #v(20pt)
-
-
 
 + Seien $n_1$ und $n_2$ zwei natürliche Zahlen mit identischer Ziffernfolge $z_(l-1) z_(l-2) ... z_0$ bezüglich unterschiedlicher Basen $b_1$ und $b_2$. Welche der folgenden Aussagen sind wahr? Begründen Sie Ihre Antwort!
 
@@ -67,21 +63,6 @@
   (d) Falls $n_1$ Teiler von $n_2$ ist, so ist $b_1$ Teiler von $b_2$.
 
   Nein, zum Beispiel: mit der Ziffernfolge $11$ und $b_1 = 7$ und $b_2 = 23$. $b_1$ ist kein Teiler von $b_2$. Jedoch sind $n_1 = 7 + 1 = 8$ und $n_2 = 23 + 1 = 24$, also ist $n_1$ ein Teiler von $n_2$.
-
-
-  #v(20pt)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -115,77 +96,66 @@
   (d) Ist die Darstellung aus Aufgabenteil (c) immer eindeutig?
 
 
-Angenommen die Darstellung ist nicht eindeutig es müsste unterschiedliche Folgen $a_0 ... a_(l-1)$ und $b_0 ... b_(l-1)$ geben, mit $ sum_(i=0)^(l-1) a_i (-10)^i = x = sum_(i=0)^(l-1) b_i (-10)^i $ Also muss gelten $sum_(i=0)^(l-1) (a_i -b_i) (-10)^i = 0$. Angenommen der Term $(a_k -b_k) (-10)^k$ sei der höchste Term ungleich 0. So muss gelten $sum_(i=0)^(k-1) (a_i -b_i) (-10)^i = - (a_k - b_k) (-10)^k$. Der größtmöglichste absolute Wert für die linke Seite dieser Gleichung ist jedoch kleiner als der kleinstmögliche absolute Wert für die rechte Seite, also kann diese Gleichung niemals erfüllt sein. Also kann es keine zwei Darstellungen für die Gleiche Zahl geben. Also ist die Darstellung immer eindeutig.
-
-
-
-
-
-#v(20pt)
-
+  Angenommen die Darstellung ist nicht eindeutig es müsste unterschiedliche Folgen $a_0 ... a_(l-1)$ und $b_0 ... b_(l-1)$ geben, mit $ sum_(i=0)^(l-1) a_i (-10)^i = x = sum_(i=0)^(l-1) b_i (-10)^i $ Also muss gelten $sum_(i=0)^(l-1) (a_i -b_i) (-10)^i = 0$. Angenommen der Term $(a_k -b_k) (-10)^k$ sei der höchste Term ungleich 0. So muss gelten $sum_(i=0)^(k-1) (a_i -b_i) (-10)^i = - (a_k - b_k) (-10)^k$. Der größtmöglichste absolute Wert für die linke Seite dieser Gleichung ist jedoch kleiner als der kleinstmögliche absolute Wert für die rechte Seite, also kann diese Gleichung niemals erfüllt sein. Also kann es keine zwei Darstellungen für die Gleiche Zahl geben. Also ist die Darstellung immer eindeutig.
 
 
 
 // TODO beweis verbessern, nicht Buch erwähnen
 
 
-
-
-2. Zeigen Sie, dass man mit Hilfe von Karatsubas Algorithmus zwei natürliche Zahlen mit $k$- bzw. $l$-stelliger Binärdarstellung (mit  $k ≤ l$) in $O(k^(log_2(3)−1)l)$ Zeit multiplizieren kann.
++ Zeigen Sie, dass man mit Hilfe von Karatsubas Algorithmus zwei natürliche Zahlen mit $k$- bzw. $l$-stelliger Binärdarstellung (mit  $k ≤ l$) in $O(k^(log_2(3)−1)l)$ Zeit multiplizieren kann.
 
 
 
-Wei beim Beweis im Buch kann man schreiben:
-$
-  T(l,k) & ≤ c                                      && "für" l,k ≤ 3  \
-  T(l,k) & ≤ c ·l +3T( ceil(l/ 2) +1, ceil(k/2) +1) && "für" l,k ≥ 4.
-$
+  Wie beim Beweis im Buch kann man schreiben:
+  $
+    T(l,k) & ≤ c                                      && "für" l,k ≤ 3  \
+    T(l,k) & ≤ c ·l +3T( ceil(l/ 2) +1, ceil(k/2) +1) && "für" l,k ≥ 4.
+  $
 
-Die Begründung ist analog wie im Buch, es gibt drei rekursive Aufrufe und die Zahlen haben jeweils maximal $ceil(l/ 2) +1$ beziehungsweise  $ceil(k/2) +1$ Stellen.
-
-
-Die Rekursion lösen wir wie folgt. Erstmal behaupten wir, dass für alle $m,n in NN union {0}$ gilt:
-
-$ T(2^m + 2, 2^n + 2) ≤ c ·( (3 / 2)^n · 2^m - 2^(m+1) -1) $
-
-Dies kann man per induktion beweisen. Für $m = n = 0$ ist $T(3,3) ≤ c$. Für $m,n in NN$ ist, wieder wegen der obigen Gleichung, $T(2^m + 2, 2^n + 2) ≤ c · ( 2^m +2) + 3T(2^(m-1) + 2, 2^(n-1) + 2)$, was man nach der Induktionsvoraussetzung ersetzen kann durch
-$ T(2^m + 2, 2^n + 2) ≤ c · (2^m + 2 + 3( (3 / 2)^(n-1) · 2^(m-1) - 2^(m)-1) ) $
-
-Dies vereinfacht sich zu
-
-$ c · (3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) - 1) $
+  Die Begründung ist analog wie im Buch, es gibt drei rekursive Aufrufe und die Zahlen haben jeweils maximal $ceil(l/ 2) +1$ beziehungsweise  $ceil(k/2) +1$ Stellen.
 
 
-Jetzt bleibt zu zeigen, dass gilt:
+  Die Rekursion lösen wir wie folgt. Erstmal behaupten wir, dass für alle $m,n in NN union {0}$ gilt:
 
-$
-  c · (3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) - 1) & ≤ c( · (3 / 2)^n · 2^m - 2^(m+1) -1) \
-            3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) & ≤ (3 / 2)^n · 2^m - 2^(m+1)          \
-                          3 · (3 / 2)^(n-1) - 2· 2 & ≤ (3 / 2)^n · 2 - 4                  \
-                                 3 · (3 / 2)^(n-1) & ≤ (3 / 2)^n · 2                      \
-                                                 3 & ≤ (3 / 2) · 2                        \
-                                                 3 & ≤ 3                                  \
-$
+  $ T(2^m + 2, 2^n + 2) ≤ c ·( (3 / 2)^n · 2^m - 2^(m+1) -1) $
 
-Das schließt die induktion.
+  Dies kann man per induktion beweisen. Für $m = n = 0$ ist $T(3,3) ≤ c$. Für $m,n in NN$ ist, wieder wegen der obigen Gleichung, $T(2^m + 2, 2^n + 2) ≤ c · ( 2^m +2) + 3T(2^(m-1) + 2, 2^(n-1) + 2)$, was man nach der Induktionsvoraussetzung ersetzen kann durch
+  $ T(2^m + 2, 2^n + 2) ≤ c · (2^m + 2 + 3( (3 / 2)^(n-1) · 2^(m-1) - 2^(m)-1) ) $
+
+  Dies vereinfacht sich zu
+
+  $ c · (3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) - 1) $
 
 
-Für zwei beliebige $l,k in NN$ mit $2 < k ≤ l$ sei nun $m := ceil(log_2(l - 2)) < 1+ log_2l$ und $n := ceil(log_2(k - 2)) < 1+ log_2k$. Dann gilt
+  Jetzt bleibt zu zeigen, dass gilt:
 
-$
-                                T(l,k) & ≤ \
-                   T(2^m + 2, 2^n + 2) & ≤ \
-  c · ( (3 / 2)^n · 2^m - 2^(m+1) -1 ) & < \
-                  c ·( (3/2)^n · 2^m ) & = \
-              c ·( 3^n · 2^m · 1/ 2^n) & ≤ \
-         c ·( 3^(log_2(k)) · l · 1/k ) & = \
-            c ·( k^(log_2(3) -1) · l )     \
-$
+  $
+    c · (3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) - 1) & ≤ c( · (3 / 2)^n · 2^m - 2^(m+1) -1) \
+              3 · (3 / 2)^(n-1) · 2^(m-1) - 2· 2^(m) & ≤ (3 / 2)^n · 2^m - 2^(m+1)          \
+                            3 · (3 / 2)^(n-1) - 2· 2 & ≤ (3 / 2)^n · 2 - 4                  \
+                                   3 · (3 / 2)^(n-1) & ≤ (3 / 2)^n · 2                      \
+                                                   3 & ≤ (3 / 2) · 2                        \
+                                                   3 & ≤ 3                                  \
+  $
+
+  Das schließt die induktion.
+
+
+  Für zwei beliebige $l,k in NN$ mit $2 < k ≤ l$ sei nun $m := ceil(log_2(l - 2)) < 1+ log_2l$ und $n := ceil(log_2(k - 2)) < 1+ log_2k$. Dann gilt
+
+  $
+                                  T(l,k) & ≤ \
+                     T(2^m + 2, 2^n + 2) & ≤ \
+    c · ( (3 / 2)^n · 2^m - 2^(m+1) -1 ) & < \
+                    c ·( (3/2)^n · 2^m ) & = \
+                c ·( 3^n · 2^m · 1/ 2^n) & ≤ \
+           c ·( 3^(log_2(k)) · l · 1/k ) & = \
+              c ·( k^(log_2(3) -1) · l )     \
+  $
 
 
 // TODO die folgenden aufgaben müssen noch verbessert werden
-
-
 
 
 + Berechnen Sie die Kondition der folgenden Funktionen und geben Sie an, wo die Funktions auswertung qualitativ gut bzw. schlecht konditioniert ist.
@@ -193,31 +163,27 @@ $
   (a) $f : RR_(≥0) -> RR$ mit $f(x) = root(3, x),$
 
 
-Die Kondition ist $abs(1/3 x^(-2/3) times x) / abs(x^(1/3)) = 1/3$ Also ist sie überall gut konditioniert.
+  Die Kondition ist $abs(1/3 x^(-2/3) times x) / abs(x^(1/3)) = 1/3$ Also ist sie überall gut konditioniert.
 
-(b) $f : RR -> RR$ mit $f(x)=a^x = e^(x ln a)$ für festes $a > 0,$
+  (b) $f : RR -> RR$ mit $f(x)=a^x = e^(x ln a)$ für festes $a > 0,$
 
-Die Kondition ist $abs(ln(a) e^(x ln(a)) times x)/ abs(e^(x ln a)) = abs(ln(a) times x)$ Also ist sie nur für absolut kleine Werte für $a$ und $x$  gut konditioniert.
-
-
-(c) $f : RR without {0} -> RR$ mit $f(x) = 1/x$
-
-Die Kondition ist $abs(-x^(-2) times x)/ abs(x^(-1)) = x^(-1) / x^(-1) = 1$ Also ist sie überall gut konditioniert.
-
-(d) $f : RR -> RR$ mit $f(x) = ln(1+|x−1|)$
-
-lassen wir $g(x) =abs(x-1)$ sein so ist für $x >= 1$, $g(x) = x -1$ und für $x <= 1$, $g(x) = 1- x$.
-
-Für $x >= 1$ ist die Kondition $abs(1/ x times x)/ abs(ln(x)) = 1 / ln(x)$. Für $x >= e$ ist die Funktion gut konditioniert. Für $1 <= x <=e$ schlecht.
+  Die Kondition ist $abs(ln(a) e^(x ln(a)) times x)/ abs(e^(x ln a)) = abs(ln(a) times x)$ Also ist sie nur für absolut kleine Werte für $a$ und $x$  gut konditioniert.
 
 
-Für $x <= 1$ ist die kondition $abs(x)/ abs((2-x) ln(2-x))$. Um 1 dominiert der logarithmus und wird sehr klein deshalb gilt, $lim_(x->1^-) abs(x)/ abs((2-x) ln(2-x)) = oo$, und die Funktion ist schlecht konditioniert um 1. Für kleinere $x$ werte wird die Funktion wieder gut konditioniert, da $ln(2-x)$ größer wird. Sehr grob ist die Funktion in etwa für $x <0.54$ gut konditioniert.
+  (c) $f : RR without {0} -> RR$ mit $f(x) = 1/x$
 
-Also it sie überall gut konditioriert außer zwischen ungefähr $0.54$ und $e$.
+  Die Kondition ist $abs(-x^(-2) times x)/ abs(x^(-1)) = x^(-1) / x^(-1) = 1$ Also ist sie überall gut konditioniert.
+
+  (d) $f : RR -> RR$ mit $f(x) = ln(1+|x−1|)$
+
+  lassen wir $g(x) =abs(x-1)$ sein so ist für $x >= 1$, $g(x) = x -1$ und für $x <= 1$, $g(x) = 1- x$.
+
+  Für $x >= 1$ ist die Kondition $abs(1/ x times x)/ abs(ln(x)) = 1 / ln(x)$. Für $x >= e$ ist die Funktion gut konditioniert. Für $1 <= x <=e$ schlecht.
 
 
-#v(20pt)
+  Für $x <= 1$ ist die kondition $abs(x)/ abs((2-x) ln(2-x))$. Um 1 dominiert der logarithmus und wird sehr klein deshalb gilt, $lim_(x->1^-) abs(x)/ abs((2-x) ln(2-x)) = oo$, und die Funktion ist schlecht konditioniert um 1. Für kleinere $x$ werte wird die Funktion wieder gut konditioniert, da $ln(2-x)$ größer wird. Sehr grob ist die Funktion in etwa für $x <0.54$ gut konditioniert.
 
+  Also it sie überall gut konditioriert außer zwischen ungefähr $0.54$ und $e$.
 
 
 + Man kann die Quadratwurzel einer Zahl $a ≥ 0$ auch mit dem Newtonverfahren angewandt auf $f (x) = 1 − a/x^2$ berechnen. Dabei können wir uns auf Eingaben $a$ mit $1 ≤ a < 4$ und den Startwert $x_0 = 1$ beschränken.
@@ -293,10 +259,6 @@ Also it sie überall gut konditioriert außer zwischen ungefähr $0.54$ und $e$.
   Startet man mit einem Graphen, kann man einen Knoten hinzufügen der mit so vielen der Knoten mit dem größten Grad adjazent ist, dass er jetzt den größten Grad hat. Dieser neue Graph wird auch einfach sein. Und seine Gradfolge entspricht der des ursprünglichen Graphens, nur mit einem neuen Knoten mit größtem Grad $v_1$, und dass der Grad der $d_1$ Knoten mit dem nächstgroßen Grad jetzt um eins erhöht ist.
 
 
-
-
-  #v(2em)
-
 + Es sei $G$ ein Baum und $A,B subset.eq V(G)$, $A inter B = emptyset$, so dass $G[A]$ und $G[B]$ Bäume sind. Zeigen Sie, dass $G[A ∩ B]$ ein Baum ist.
 
   $G$ ist ein Baum, enthält also keine Kreise. Ein Teilgraph von $G$ kann natürlich auch keine Kreise enthalten, also ist $G[A inter B]$ ein Wald.
@@ -304,18 +266,11 @@ Also it sie überall gut konditioriert außer zwischen ungefähr $0.54$ und $e$.
   Angenommen $G[A inter B]$ ist nicht zusammenhängend, es gibt also zwei Knoten $x,y in V(G[A inter B])$ ohne einen $x hyph.nobreak y hyph.nobreak"Weg"$ zwischen ihnen. Da $G[A]$ und $G[B]$ aber Bäume sind muss es in ihnen jeweils einen solchen Weg geben, es kann aber nur einen $x hyph.nobreak y hyph.nobreak"Weg"$ geben, da es sonst einen Kreis in $G$ gäbe. Dieser eine $x hyph.nobreak y hyph.nobreak"Weg"$ muss also sowohl in $G[A]$ als auch in $G[B]$ liegen, damit ist er aber in $G[A inter B]$, ein Wiederspruch, also ist $G[A inter B]$ zusammenhängend und damit ein Baum.
 
 
-
-
-1. Wir zeigen, dass es keine Kante ${x,y} in E(G)$ geben kann ohne, dass gilt $x in V(P_(r y))$ oder $y in V(P_(r x))$.
++ Wir zeigen, dass es keine Kante ${x,y} in E(G)$ geben kann ohne, dass gilt $x in V(P_(r y))$ oder $y in V(P_(r x))$.
 
   Gilt für eine Kante ${x,y} in E(T)$ so ist einer der Knoten näher an $r$, dieser Knoten muss dann im Weg nach $r$ des anderen sein, da $T$ ein Baum ist.
 
   Lassen wir $x$ den Knoten aus ${x,y}$ sein der während der Tiefensuche als erstes erforscht wurde. Da $x$ und $y$ in $G$ adjazent sind aber nicht in $T$ muss es noch eine weitere Kante aus $x$ geben, die als nächstes erforscht wird. Entweder wir suchen weiter und finden irgendwann einen Weg zu $y$ ohne vorher nochmal $x$ betreten zu haben, in diesem fall muss $x$ natürlich im $y$-$r$-Weg liegen. Oder wir haben alles erkundet und müssen zu $x$ zurückkehren und einen weiteren an $x$ adjazenten Knoten ansteuern der nicht $y$ ist, wo sich das Prozedere wiederholt. Oder alle anderen Kanten an $x$ wurden vollständig erforscht und jetzt würde ${x,y}$ entlanggegangen werden. Also gibt es entweder einen wiederspruch oder $x$ ist im $y$-$r$-Weg.
-
-  #v(2em)
-
-
-
 
 
 + Wir wollen $n$ Binärstrings der Länge $m$ lexikographisch sortieren.
@@ -329,8 +284,7 @@ Also it sie überall gut konditioriert außer zwischen ungefähr $0.54$ und $e$.
   Dies tun wir für jede Stelle, also $m$ mal. Dabei besteht eine Iteration aus maximal $n$ Überprüfungen und Vertauschungen. Also hat der Algorithmus eine Laufzeit von $O(m n)$.
 
 
-ument
-2. Der Algorithmus für Mergesort mit b teilungen:
++ Der Algorithmus für Mergesort mit b teilungen:
 
   Eingabe: eine Menge $S ={s_1,...,s_n};$ eine durch Schlüssel induzierte partielle Ordnung $prec.eq$ auf S (durch ein Orakel gegeben). Ein Zahl $b in NN$.
 
@@ -360,10 +314,9 @@ ument
     $T(n) ≤ T(b^k) ≤ c(k log b + 1)b^k <= n c( log b + log n +1)= O(n log n)$
 
 
-
 // Start of Document
 // TODO die aufgabe ist ein bisschen falsch.
-3. Der Algorithmus der dieses Problem löst sieht wie folgt aus:
++ Der Algorithmus der dieses Problem löst sieht wie folgt aus:
 
 
   Eingabe: ein Digraph $G$ mit Kantengewichten $c: E(G) → RR_(≥0)$, ein Knoten $s ∈ V(G)$.
@@ -384,7 +337,6 @@ ument
   Sei zu jedem Zeitpunkt des Algorithmus $T := {p(v) | v ∈ (R ∪ Q) without {s}}$.
 
   Am Ende jeder Iteration der *while* Schleife gilt:
-
 
 
   *(a)* Für den Knoten $v in Q$ mit $l(v)$ minimal gilt $p(v)$ ist die kürzeste Kante in $δ^+_G (R)$.
