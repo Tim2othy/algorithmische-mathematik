@@ -126,7 +126,7 @@ Angenommen die Darstellung ist nicht eindeutig es müsste unterschiedliche Folge
 
 
 
-
+// TODO beweis verbessern, nicht Buch erwähnen
 
 
 
