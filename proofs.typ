@@ -11,7 +11,7 @@
 
     Die Anweisung `n = n + 1` wird nur auf ungerade Zahlen ausgeführt also muss das Ergebnis gerade sein, also kann die Anweisung maximal jedes zweite mal vorkommen. Beide Anweisungen hintereinander, also `n = (n + 1)/2` oder `n = n/2 + 1`, schrumpfen jedes $n > 2$. Also muss `2` erreicht werden, und `2` führt zu `1` also terminiert das Programm stets.
 
-    Da mindestens jede zweite Anweisung `n = n/2` ist fällt `n` nach zwei Operationen mindestens mit `n = n/2 + 1`. Da man jedes `n` nur $log_2(n)$ mal durch 2 teilen muss bis es 1 ist, wird also `n = n+1` nicht viel mehr als $log_2(n)$ mal ausgeführt, also ist der additie Term für große `n` irrelevant. Also ist die Laufzeit in $O(log n)$.
+    Da mindestens jede zweite Anweisung `n = n/2` ist fällt `n` nach zwei Operationen mindestens mit `n = n/2 + 1`. Da man jedes `n` nur $log_2(n)$ mal durch 2 teilen muss bis es 1 ist, wird also `n = n+1` nicht viel mehr als $log_2(n)$ mal ausgeführt, also ist der additive Term für große `n` irrelevant. Also ist die Laufzeit in $O(log n)$.
 
 
 
@@ -26,13 +26,13 @@
 
     Also wird für ein `n` in $M_3$ nach jeder Operationen das Ergebnis immernoch in $M_3$ sein. Insbesondere führt `n = 3` zu `n = 6` und `n = 6` zu `n = 3`.
 
-    Alse terminiert das Programm für kein `n` aus $M_3$.
+    Also terminiert das Programm für kein `n` aus $M_3$.
 
     Für alle anderen `n` terminiert das Programm. Da kein `n` nicht in $M_3$ nach einer Operation in $M_3$ ist. Für `n = n + 3` ist dies offensichtlich.
 
     Angenommen $n/2$ ist in $M_3$. Also gibt es ein $k in NN$ so, das $n/2 = 3k$. Natürlich muss $n = 2 dot 3k$ gelten also muss $n$ auch in $M_3$ sein. Also kann die Anweisung `n = n/2` nie eine Zahl nicht in $M_3$ in eine Zahl in $M_3$ umwandeln.
 
-    Da wieder mindestens jede zweite Operation `n = n/2` ist fällt `n` in zwei Operationen mindestens mit `n = n/2 + 3`, also fällt jedes $n >6$ nach zwei Operationen. Insebesondere gilt `1 <- 2 <- 4 <- 8 <- 5`. Also werden genau alle Engaben nicht in $M_3$ terminieren.
+    Da wieder mindestens jede zweite Operation `n = n/2` ist fällt `n` in zwei Operationen mindestens mit `n = n/2 + 3`, also fällt jedes $n >6$ nach zwei Operationen. Insebesondere gilt `1 <- 2 <- 4 <- 8 <- 5`. Also werden genau alle Eingaben nicht in $M_3$ terminieren.
 
 
 
@@ -42,7 +42,7 @@
 
   + Falls $b_1 > b_2$, so ist $n_1 > n_2$.
 
-    Die aussage stimmt nicht. Zum beispiel mit der Ziffernfolge $z_0 = 1$, $b_1 = 4$ und $b_2 = 3$, dann ist $n_1 = 1 dot 4^0 = 1 = 1 dot 3^0 = n_2$.
+    Die Aussage stimmt nicht. Zum beispiel mit der Ziffernfolge $z_0 = 1$, $b_1 = 4$ und $b_2 = 3$, dann ist $n_1 = 1 dot 4^0 = 1 = 1 dot 3^0 = n_2$.
 
 
 
@@ -164,27 +164,27 @@
   + $f : RR_(≥0) -> RR$ mit $f(x) = root(3, x),$
 
 
-    Die Kondition ist $abs(1/3 x^(-2/3) times x) / abs(x^(1/3)) = 1/3$ Also ist sie überall gut konditioniert.
+    Die Kondition ist $abs(1/3 x^(-2/3) dot x) / abs(x^(1/3)) = 1/3$ Also ist sie überall gut konditioniert.
 
   + $f : RR -> RR$ mit $f(x)=a^x = e^(x ln a)$ für festes $a > 0,$
 
-    Die Kondition ist $abs(ln(a) e^(x ln(a)) times x)/ abs(e^(x ln a)) = abs(ln(a) times x)$ Also ist sie nur für absolut kleine Werte für $a$ und $x$ gut konditioniert.
+    Die Kondition ist $abs(ln(a) e^(x ln(a)) dot x)/ abs(e^(x ln a)) = abs(ln(a) dot x)$ Also ist sie nur für absolut kleine Werte für $a$ und $x$ gut konditioniert.
 
 
   + $f : RR without {0} -> RR$ mit $f(x) = 1/x$
 
-    Die Kondition ist $abs(-x^(-2) times x)/ abs(x^(-1)) = x^(-1) / x^(-1) = 1$ Also ist sie überall gut konditioniert.
+    Die Kondition ist $abs(-x^(-2) dot x)/ abs(x^(-1)) = x^(-1) / x^(-1) = 1$ Also ist sie überall gut konditioniert.
 
   + $f : RR -> RR$ mit $f(x) = ln(1+|x−1|)$
 
     Lassen wir $g(x) =abs(x-1)$ sein so ist für $x >= 1$, $g(x) = x -1$ und für $x <= 1$, $g(x) = 1- x$.
 
-    Für $x >= 1$ ist die Kondition $abs(1/ x times x)/ abs(ln(x)) = 1 / ln(x)$. Für $x >= e$ ist die Funktion gut konditioniert. Für $1 <= x <=e$ schlecht.
+    Für $x >= 1$ ist die Kondition $abs(1/ x dot x)/ abs(ln(x)) = 1 / ln(x)$. Für $x >= e$ ist die Funktion gut konditioniert. Für $1 <= x <=e$ schlecht.
 
 
     Für $x <= 1$ ist die kondition $abs(x)/ abs((2-x) ln(2-x))$. Um 1 dominiert der logarithmus und wird sehr klein deshalb gilt, $lim_(x->1^-) abs(x)/ abs((2-x) ln(2-x)) = oo$, und die Funktion ist schlecht konditioniert um 1. Für kleinere $x$ werte wird die Funktion wieder gut konditioniert, da $ln(2-x)$ größer wird. Sehr grob ist die Funktion in etwa für $x <0.54$ gut konditioniert.
 
-    Also it sie überall gut konditioriert außer zwischen ungefähr $0.54$ und $e$.
+    Also it sie überall gut konditioniert außer zwischen ungefähr $0.54$ und $e$.
 
 
 + Man kann die Quadratwurzel einer Zahl $a ≥ 0$ auch mit dem Newtonverfahren angewandt auf $f (x) = 1 − a/x^2$ berechnen. Dabei können wir uns auf Eingaben $a$ mit $1 ≤ a < 4$ und den Startwert $x_0 = 1$ beschränken.
@@ -209,7 +209,7 @@
 
     Für $x_n < sqrt(a)$ gilt $x_n^2 / a< 1$ also wird nach einer Iteration
     $
-      x_(n + 1) <- x_n + 1/ 2 (x_n - x_n times x_n^2/ a).
+      x_(n + 1) <- x_n + 1/ 2 (x_n - x_n dot x_n^2/ a).
     $
     dann $x_(n+1) > x_n$ gelten. Also wird die Folge immer wachsen wenn sie kleiner als $sqrt(a)$ ist.
 
@@ -227,7 +227,7 @@
              0 & < - ( 3 epsilon + epsilon^3 / a + (3 epsilon(sqrt(a) + epsilon) )/ sqrt(a))
     $
 
-    dies ist ein wiederspruch also kann nie $x_n < sqrt(a) < x_(n+1)$ gelten, also konvergiert die Funktion.
+    dies ist ein Wiederspruch also kann nie $x_n < sqrt(a) < x_(n+1)$ gelten, also konvergiert die Funktion.
 
 
     Nun zu zeigen, dass sie quadratisch konvergiert. Sei $x_n = sqrt(a) + epsilon_n$ so gilt, nach etwas umformung $x_(n+1) = sqrt(a) - (3 epsilon^3 ) / (2 sqrt(a)) - epsilon^3 / (2a)$. Dies kann man in
@@ -250,7 +250,7 @@
 
   Ich zeige zuerst die *Hinrichtung*.
 
-  Falls in einem Graphen die Knoten mit dem größten Grad alle mit $v_1$ adjazent sind (das heißt es gibt keine zwei Knoten wo der mit dem kleineren Grad mit $v_1$ adjazent ist, der größere aber nicht), dann kann man $v_1$, und alle mit $v_1$ verbundenen Kanten entfernen und erhält einen neuen Graphen mit genau der verlangten Gradfolge. Dies ist der Fall da $v_1$ entfert wurden und genau die $d_1$ Knoten mit dem größten Grad jetzt mit einem Knoten weniger adjazent sind.
+  Falls in einem Graphen die Knoten mit dem größten Grad alle mit $v_1$ adjazent sind (das heißt es gibt keine zwei Knoten wo der mit dem kleineren Grad mit $v_1$ adjazent ist, der größere aber nicht), dann kann man $v_1$, und alle mit $v_1$ verbundenen Kanten entfernen und erhält einen neuen Graphen mit genau der verlangten Gradfolge. Dies ist der Fall da $v_1$ entfernt wurden und genau die $d_1$ Knoten mit dem größten Grad jetzt mit einem Knoten weniger adjazent sind.
 
   Bleibt zu zeigen, dass man jeden Graphen in einen solchen Graphen umwandeln kann ohne die Gradfolge zu verändern. Sei $v_s$ ein mit $v_1$ adjazenter Knoten, und $v_l$ ein nicht mit $v_1$ adjazenter Knoten. Desweiteren sei $d_s$ < $d_l$.
   - Entferne die Kante zwischen $v_s$ und $v_1$.
@@ -278,7 +278,7 @@
 
   Gilt für eine Kante ${x,y} in E(T)$ so ist einer der Knoten näher an $r$, dieser Knoten muss dann im Weg nach $r$ des anderen sein, da $T$ ein Baum ist.
 
-  Lassen wir $x$ den Knoten aus ${x,y}$ sein der während der Tiefensuche als erstes erforscht wurde. Da $x$ und $y$ in $G$ adjazent sind aber nicht in $T$ muss es noch eine weitere Kante aus $x$ geben, die als nächstes erforscht wird. Entweder wir suchen weiter und finden irgendwann einen Weg zu $y$ ohne vorher nochmal $x$ betreten zu haben, in diesem fall muss $x$ natürlich im $y$-$r$-Weg liegen. Oder wir haben alles erkundet und müssen zu $x$ zurückkehren und einen weiteren an $x$ adjazenten Knoten ansteuern der nicht $y$ ist, wo sich das Prozedere wiederholt. Oder alle anderen Kanten an $x$ wurden vollständig erforscht und jetzt würde ${x,y}$ entlanggegangen werden. Also gibt es entweder einen wiederspruch oder $x$ ist im $y$-$r$-Weg.
+  Lassen wir $x$ den Knoten aus ${x,y}$ sein der während der Tiefensuche als erstes erforscht wurde. Da $x$ und $y$ in $G$ adjazent sind aber nicht in $T$ muss es noch eine weitere Kante aus $x$ geben, die als nächstes erforscht wird. Entweder wir suchen weiter und finden irgendwann einen Weg zu $y$ ohne vorher nochmal $x$ betreten zu haben, in diesem fall muss $x$ natürlich im $y$-$r$-Weg liegen. Oder wir haben alles erkundet und müssen zu $x$ zurückkehren und einen weiteren an $x$ adjazenten Knoten ansteuern der nicht $y$ ist, wo sich das Prozedere wiederholt. Oder alle anderen Kanten an $x$ wurden vollständig erforscht und jetzt würde ${x,y}$ entlanggegangen werden. Also gibt es entweder einen Wiederspruch oder $x$ ist im $y$-$r$-Weg.
 
 
 + Wir wollen $n$ Binärstrings der Länge $m$ lexikographisch sortieren.
