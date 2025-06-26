@@ -65,15 +65,6 @@
 
 + Es sei $(a_(l-1) a_(l-2) ... a_0)_(-10) := sum_(i=0)^(l-1) a_i (-10)^i$, wobei $a_i ∈ {0, ..., 9}$ sei für $i ∈ {0, ..., l - 1}$. Man nennt $a_(l-1) ... a_0$ Darstellung von $sum_(i=0)^(l-1) a_i (-10)^i$ zur Basis -10, falls $a_(l-1) != 0$ gilt oder $l = 1$ und $a_0 = 0$ gelten.
 
-  + Schreiben Sie $(19375573910)_(-10)$ als Dezimalzahl.
-
-    Als Dezimalzahl ist sie $(1234567890)_(10)$.
-
-  + Geben Sie eine Darstellung von $(9230753)_(10)$ zur Basis -10 an.
-
-    Sie ist $(190830853)_(-10)$ zur Basis -10.
-
-
   + Zeigen Sie, dass es für jede ganze Zahl $x$ eine Darstellung zur Basis -10 gibt.
 
     Erstmal für positive Zahlen. Per induktion, der Fall für 1 ist offensichtlich mit der Zahlenfolge die nur aus $a_0$ besteht und $a_0 = 1$.
@@ -90,7 +81,7 @@
 
     0 erreicht man mit $l = 1$ und $a_0 = 0$.
 
-  + Ist die Darstellung aus Aufgabenteil (c) immer eindeutig?
+  + Ist die Darstellung aus Aufgabenteil (a) immer eindeutig?
 
 
     Angenommen die Darstellung ist nicht eindeutig es müsste unterschiedliche Folgen $a_0 ... a_(l-1)$ und $b_0 ... b_(l-1)$ geben, mit
