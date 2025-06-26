@@ -297,11 +297,11 @@ Also it sie überall gut konditioriert außer zwischen ungefähr $0.54$ und $e$.
 
   #v(2em)
 
-+ Es sei $G$ ein Baum und $A,B subset.eq V(G)$, $A sect B = emptyset$, so dass $G[A]$ und $G[B]$ Bäume sind. Zeigen Sie, dass $G[A ∩ B]$ ein Baum ist.
++ Es sei $G$ ein Baum und $A,B subset.eq V(G)$, $A inter B = emptyset$, so dass $G[A]$ und $G[B]$ Bäume sind. Zeigen Sie, dass $G[A ∩ B]$ ein Baum ist.
 
-  $G$ ist ein Baum, enthält also keine Kreise. Ein Teilgraph von $G$ kann natürlich auch keine Kreise enthalten, also ist $G[A sect B]$ ein Wald.
+  $G$ ist ein Baum, enthält also keine Kreise. Ein Teilgraph von $G$ kann natürlich auch keine Kreise enthalten, also ist $G[A inter B]$ ein Wald.
 
-  Angenommen $G[A inter B]$ ist nicht zusammenhängend, es gibt also zwei Knoten $x,y in V(G[A sect B])$ ohne einen $x hyph.nobreak y hyph.nobreak"Weg"$ zwischen ihnen. Da $G[A]$ und $G[B]$ aber Bäume sind muss es in ihnen jeweils einen solchen Weg geben, es kann aber nur einen $x hyph.nobreak y hyph.nobreak"Weg"$ geben, da es sonst einen Kreis in $G$ gäbe. Dieser eine $x hyph.nobreak y hyph.nobreak"Weg"$ muss also sowohl in $G[A]$ als auch in $G[B]$ liegen, damit ist er aber in $G[A sect B]$, ein Wiederspruch, also ist $G[A sect B]$ zusammenhängend und damit ein Baum.
+  Angenommen $G[A inter B]$ ist nicht zusammenhängend, es gibt also zwei Knoten $x,y in V(G[A inter B])$ ohne einen $x hyph.nobreak y hyph.nobreak"Weg"$ zwischen ihnen. Da $G[A]$ und $G[B]$ aber Bäume sind muss es in ihnen jeweils einen solchen Weg geben, es kann aber nur einen $x hyph.nobreak y hyph.nobreak"Weg"$ geben, da es sonst einen Kreis in $G$ gäbe. Dieser eine $x hyph.nobreak y hyph.nobreak"Weg"$ muss also sowohl in $G[A]$ als auch in $G[B]$ liegen, damit ist er aber in $G[A inter B]$, ein Wiederspruch, also ist $G[A inter B]$ zusammenhängend und damit ein Baum.
 
 
 
