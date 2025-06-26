@@ -10,16 +10,20 @@
     lang: "de",
   )
 
-  show link: underline
-  set list(indent: 1em)
+  show math.equation: set text(font: "Cambria Math")
+
 
   set enum(
-    numbering: "1.a.",
-    spacing: 1.2em,
+    full: true,
+    numbering: (..num) => {
+      let num = num.pos()
+      numbering(if num.len() == 1 { "1." } else { "(a)" }, num.last())
+    },
+    spacing: 4em,
     indent: 1em,
   )
 
-  set page(margin: (x: 1.5cm, y: 7em), header: [
+  set page(margin: (x: 1.5cm, y: 7em), numbering: "1", header: [
     #course   #h(1fr)     #exersise\
   ])
 
